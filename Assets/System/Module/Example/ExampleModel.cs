@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class ExampleModel : MonoBehaviour
+public class ExampleModel
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Vector2 position;
 
-    // Update is called once per frame
-    void Update()
+    public Vector2 Position
     {
-        
+        get { return position; }
+        set { position = value; }
     }
 }
