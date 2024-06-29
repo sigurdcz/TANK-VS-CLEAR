@@ -19,7 +19,7 @@ public class PlayerView : MonoBehaviour
         presenter = examplePresenter;
     }
 
-    private void Start()
+    private void OnEnable()
     {
         buttonUp.onClick.AddListener(MoveUp);
         buttonDown.onClick.AddListener(MoveDown);
@@ -28,7 +28,7 @@ public class PlayerView : MonoBehaviour
         RerenderView();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         buttonUp.onClick.RemoveListener(MoveUp);
         buttonDown.onClick.RemoveListener(MoveDown);
@@ -47,8 +47,8 @@ public class PlayerView : MonoBehaviour
 
     private void RerenderView()
     {
-        player.transform.position = model.Position;
-        realPositionText.text = $"Real position: {player.transform.position}";
+        player.transform.localPosition = model.Position;
+        realPositionText.text = $"Real position: {player.transform.localPosition}";
         modelPositionText.text = $"Model position: {model.Position}";
     }
 }

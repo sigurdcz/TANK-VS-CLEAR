@@ -13,10 +13,11 @@ public class PlayerPresenter: MonoBehaviour
     public void Move(Vector2 direction)
     {
         model.Position += direction;
+        model.SaveData();
     }
 
-    public float GetSpeed()
+    private void OnDisable()
     {
-        return model.Speed;
+        model.SaveData();
     }
 }
