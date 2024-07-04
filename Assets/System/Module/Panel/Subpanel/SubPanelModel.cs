@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 [System.Serializable]
-public class SaveSubPanelModel
+public class SubPanelModel
 {
     public string IconPath;
     public string Title;
@@ -9,9 +9,3 @@ public class SaveSubPanelModel
     public List<PanelItemModel> PanelItems;
 }
 
-[System.Serializable]
-public class PanelItemModel
-{
-    public string IconPath;
-    public string TextContent;
-}

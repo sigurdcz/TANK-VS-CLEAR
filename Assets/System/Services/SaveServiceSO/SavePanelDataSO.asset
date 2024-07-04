@@ -20,7 +20,7 @@ MonoBehaviour:
     ClickCount: 1
     IsShown: 0
   - Name: 
-    ClickCount: 15
+    ClickCount: 26
     IsShown: 0
   - Name: PanelAbout
     ClickCount: 2
@@ -29,9 +29,14 @@ MonoBehaviour:
   - IconPath: a1-r
     Title: 1
     TextContent: a1-r
+    PanelItems:
+    - IconPath: a1-r
+      TextContent: abc
   - IconPath: a1-r
     Title: 2
     TextContent: a1-r
+    PanelItems: []
   - IconPath: a1-r
     Title: 3
     TextContent: a1-r
+    PanelItems: []

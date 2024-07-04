@@ -38,7 +38,7 @@ public class ButtonView : MonoBehaviour
         // Show the selected subpanel
         subPanel.SetActive(true);
 
-        var panelData = saveService.GetPanelData(subPanel.GetComponent<BaseSubPanel>().panelName);
+        var panelData = saveService.GetPanelData(subPanel.GetComponent<BaseSubPanelView>().PanelName);
         panelData.ClickCount++;
         saveService.SavePanelData(panelData);
     }

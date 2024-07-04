@@ -43,12 +43,12 @@ public class SaveServiceScriptableObject : ISaveService
         }
     }
 
-    public List<SaveSubPanelModel> GetSubPanelData()
+    public List<SubPanelModel> GetSubPanelData()
     {
-        var subPanelModels = new List<SaveSubPanelModel>();
+        var subPanelModels = new List<SubPanelModel>();
         foreach (var subPanelSave in saveData.subPanels)
         {
-            subPanelModels.Add(new SaveSubPanelModel
+            subPanelModels.Add(new SubPanelModel
             {
                 IconPath = subPanelSave.IconPath,
                 Title = subPanelSave.Title,
@@ -59,12 +59,12 @@ public class SaveServiceScriptableObject : ISaveService
         return subPanelModels;
     }
 
-    public void SaveSubPanelData(List<SaveSubPanelModel> subPanels)
+    public void SaveSubPanelData(List<SubPanelModel> subPanels)
     {
         saveData.subPanels.Clear();
         foreach (var subPanelModel in subPanels)
         {
-            saveData.subPanels.Add(new SaveSubPanelModel
+            saveData.subPanels.Add(new SubPanelModel
             {
                 IconPath = subPanelModel.IconPath,
                 Title = subPanelModel.Title,

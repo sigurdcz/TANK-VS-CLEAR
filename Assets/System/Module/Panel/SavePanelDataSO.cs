@@ -5,5 +5,5 @@ using System.Collections.Generic;
 public class SavePanelDataSO : ScriptableObject
 {
     public List<SavePanelSave> panels = new List<SavePanelSave>();
-    public List<SaveSubPanelModel> subPanels = new List<SaveSubPanelModel>();
+    public List<SubPanelModel> subPanels = new List<SubPanelModel>();
 }

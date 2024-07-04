@@ -1,7 +1,6 @@
 [System.Serializable]
-public class SaveSubPanelSave
+public class PanelItemModel
 {
     public string IconPath;
-    public string Title;
     public string TextContent;
 }

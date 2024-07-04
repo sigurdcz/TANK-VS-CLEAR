@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 3017510180902480971}
   - component: {fileID: 5725328878234202852}
   m_Layer: 5
-  m_Name: AboutItem - text
+  m_Name: AboutItem - SimpleText - Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,10 +160,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2634685595234807356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f38223bb32a8b1419ddd387f042fe28, type: 3}
+  m_Script: {fileID: 11500000, guid: e64d026e3c7122c4f87495ea72d5bdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelName: 
   icon: {fileID: 5143293287742619741}
   title: {fileID: 576464133617801916}
   textContent: {fileID: 1403129735388662494}

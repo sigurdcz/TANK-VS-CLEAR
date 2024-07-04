@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class SaveService : ISaveService
 {
     private Dictionary<string, SavePanelModel> panelData = new Dictionary<string, SavePanelModel>();
-    private List<SaveSubPanelModel> subPanelData = new List<SaveSubPanelModel>();
+    private List<SubPanelModel> subPanelData = new List<SubPanelModel>();
 
     public SavePanelModel GetPanelData(string panelName)
     {
@@ -19,12 +19,12 @@ public class SaveService : ISaveService
         panelData[panelModel.Name] = panelModel;
     }
 
-    public List<SaveSubPanelModel> GetSubPanelData()
+    public List<SubPanelModel> GetSubPanelData()
     {
         return subPanelData;
     }
 
-    public void SaveSubPanelData(List<SaveSubPanelModel> subPanels)
+    public void SaveSubPanelData(List<SubPanelModel> subPanels)
     {
         subPanelData = subPanels;
     }

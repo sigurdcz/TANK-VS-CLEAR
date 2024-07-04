@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class PanelAboutController : IPanelController
 {
@@ -65,19 +64,19 @@ public class PanelAboutController : IPanelController
         foreach (var subPanelData in subPanels)
         {
             GameObject subPanel;
-            BaseSubPanel subPanelScript;
+            BaseSubPanelView subPanelScript;
 
             if (subPanelData.PanelItems != null && subPanelData.PanelItems.Count > 0)
             {
                 subPanel = GameObject.Instantiate(containerSubPanelPrefab, leftContainer);
-                subPanelScript = subPanel.GetComponent<ContainerSubPanel>();
-                ((ContainerSubPanel)subPanelScript).Initialize(subPanelData.IconPath, subPanelData.Title, subPanelData.PanelItems);
+                subPanelScript = subPanel.GetComponent<ContainerSubPanelView>();
+                subPanelScript.Initialize(subPanelData);
             }
             else
             {
                 subPanel = GameObject.Instantiate(textSubPanelPrefab, leftContainer);
-                subPanelScript = subPanel.GetComponent<TextSubPanel>();
-                subPanelScript.Initialize(subPanelData.IconPath, subPanelData.Title, subPanelData.TextContent);
+                subPanelScript = subPanel.GetComponent<TextSubPanelView>();
+                subPanelScript.Initialize(subPanelData);
             }
 
             GameObject button = GameObject.Instantiate(buttonPrefab, rightContainer);
