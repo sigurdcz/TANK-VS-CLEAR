@@ -1,32 +1,41 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PanelAboutController : IPanelController
 {
-    private IPanelView view;
+    private IPanelView viewAbout;
     private ISaveService saveService;
     private SavePanelModel model;
-    private IPanelView mainView;
-    private Transform leftContainer;
-    private Transform rightContainer;
-    [SerializeField] private TextSubPanelView textSubPanelPrefab;
-    [SerializeField] private ContainerSubPanelView containerSubPanelPrefab;
-    [SerializeField] private ButtonView buttonPrefab;  
+    private IPanelView viewMain;
+    private Transform aboutLeftContainer;
+    private Transform aboutRightContainer;
+    private TextSubPanelView aboutTextSubPanelPrefab;
+    private ContainerSubPanelView aboutContainerSubPanelPrefab;
+    private ButtonView aboutSubPanelButtonPrefab;
 
 
-    public PanelAboutController(IPanelView view, ISaveService saveService, SavePanelModel model, IPanelView mainView, Transform leftContainer, Transform rightContainer, TextSubPanelView textSubPanelPrefab, ContainerSubPanelView containerSubPanelPrefab, ButtonView buttonPrefab)
+    public PanelAboutController(
+        IPanelView viewAbout,
+        ISaveService saveService,
+        SavePanelModel model,
+        IPanelView mainView,
+        Transform leftContainer,
+        Transform rightContainer,
+        TextSubPanelView aboutTextSubPanelPrefab,
+        ContainerSubPanelView aboutContainerSubPanelPrefab,
+        ButtonView aboutSubPanelButtonPrefab
+        )
     {
-        this.view = view;
+        this.viewAbout = viewAbout;
         this.saveService = saveService;
         this.model = model;
-        this.mainView = mainView;
-        this.leftContainer = leftContainer;
-        this.rightContainer = rightContainer;
-        this.textSubPanelPrefab = textSubPanelPrefab;
-        this.containerSubPanelPrefab = containerSubPanelPrefab;
-        this.buttonPrefab = buttonPrefab;
+        this.viewMain = mainView;
+        this.aboutLeftContainer = leftContainer;
+        this.aboutRightContainer = rightContainer;
+        this.aboutTextSubPanelPrefab = aboutTextSubPanelPrefab;
+        this.aboutContainerSubPanelPrefab = aboutContainerSubPanelPrefab;
+        this.aboutSubPanelButtonPrefab = aboutSubPanelButtonPrefab;
 
-        view.SetController(this);
+        this.viewAbout.SetController(this);
     }
 
     public void OnPanelInteraction(string interaction)
@@ -36,8 +45,8 @@ public class PanelAboutController : IPanelController
             case "BackButtonClicked":
                 model.IncrementClickCount();
                 SavePanelData();
-                view.Hide();
-                mainView.Show();
+                viewAbout.Hide();
+                viewMain.Show();
                 break;
 
             case "LoadSubPanels":
@@ -49,12 +58,12 @@ public class PanelAboutController : IPanelController
 
     private void ClearOldSubPanels()
     {
-        foreach (Transform child in leftContainer)
+        foreach (Transform child in aboutLeftContainer)
         {
             GameObject.Destroy(child.gameObject);
         }
 
-        foreach (Transform child in rightContainer)
+        foreach (Transform child in aboutRightContainer)
         {
             GameObject.Destroy(child.gameObject);
         }
@@ -66,8 +75,8 @@ public class PanelAboutController : IPanelController
         BaseSubPanelView subPanel = null;
         foreach (var subPanelData in subPanels)
         {
-            
-            subPanel = GameObject.Instantiate(containerSubPanelPrefab, leftContainer);
+
+            subPanel = GameObject.Instantiate(aboutContainerSubPanelPrefab, aboutLeftContainer);
 
             if (subPanelData.PanelItems != null && subPanelData.PanelItems.Count > 0)
             {
@@ -75,13 +84,13 @@ public class PanelAboutController : IPanelController
             }
             else
             {
-                subPanel = GameObject.Instantiate(textSubPanelPrefab, leftContainer);
+                subPanel = GameObject.Instantiate(aboutTextSubPanelPrefab, aboutLeftContainer);
             }
             subPanel.Initialize(subPanelData);
             subPanel.gameObject.SetActive(false);
 
-            ButtonView buttonView = GameObject.Instantiate(buttonPrefab, rightContainer);
-            buttonView.Initialize(subPanel, saveService, leftContainer);
+            ButtonView buttonView = GameObject.Instantiate(aboutSubPanelButtonPrefab, aboutRightContainer);
+            buttonView.Initialize(subPanel, saveService, aboutLeftContainer);
             buttonView.SetButtonDetails(subPanelData.IconPath, subPanelData.Title);
         }
 
