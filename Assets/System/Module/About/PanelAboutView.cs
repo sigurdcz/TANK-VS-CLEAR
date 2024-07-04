@@ -7,8 +7,6 @@ public class PanelAboutView : MonoBehaviour, IPanelView
     [SerializeField] private Button backButton;
     [SerializeField] private Transform leftContainer;
     [SerializeField] private Transform rightContainer;
-    [SerializeField] private GameObject subPanelPrefab; //todo
-    [SerializeField] private GameObject buttonPrefab;
 
     private IPanelController controller;
 
