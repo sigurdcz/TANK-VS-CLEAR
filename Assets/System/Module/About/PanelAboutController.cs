@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PanelAboutController : IPanelController
 {
@@ -8,11 +9,12 @@ public class PanelAboutController : IPanelController
     private IPanelView mainView;
     private Transform leftContainer;
     private Transform rightContainer;
-    private GameObject textSubPanelPrefab;
-    private GameObject containerSubPanelPrefab;
-    private GameObject buttonPrefab;
+    [SerializeField] private TextSubPanelView textSubPanelPrefab;
+    [SerializeField] private ContainerSubPanelView containerSubPanelPrefab;
+    [SerializeField] private ButtonView buttonPrefab;  
 
-    public PanelAboutController(IPanelView view, ISaveService saveService, SavePanelModel model, IPanelView mainView, Transform leftContainer, Transform rightContainer, GameObject textSubPanelPrefab, GameObject containerSubPanelPrefab, GameObject buttonPrefab)
+
+    public PanelAboutController(IPanelView view, ISaveService saveService, SavePanelModel model, IPanelView mainView, Transform leftContainer, Transform rightContainer, TextSubPanelView textSubPanelPrefab, ContainerSubPanelView containerSubPanelPrefab, ButtonView buttonPrefab)
     {
         this.view = view;
         this.saveService = saveService;
@@ -61,28 +63,31 @@ public class PanelAboutController : IPanelController
     private void LoadSubPanels()
     {
         var subPanels = saveService.GetSubPanelData();
+        BaseSubPanelView subPanel = null;
         foreach (var subPanelData in subPanels)
         {
-            GameObject subPanel;
-            BaseSubPanelView subPanelScript;
+            
+            subPanel = GameObject.Instantiate(containerSubPanelPrefab, leftContainer);
 
             if (subPanelData.PanelItems != null && subPanelData.PanelItems.Count > 0)
             {
-                subPanel = GameObject.Instantiate(containerSubPanelPrefab, leftContainer);
-                subPanelScript = subPanel.GetComponent<ContainerSubPanelView>();
-                subPanelScript.Initialize(subPanelData);
+                subPanel = subPanel.GetComponent<ContainerSubPanelView>();
             }
             else
             {
                 subPanel = GameObject.Instantiate(textSubPanelPrefab, leftContainer);
-                subPanelScript = subPanel.GetComponent<TextSubPanelView>();
-                subPanelScript.Initialize(subPanelData);
             }
+            subPanel.Initialize(subPanelData);
+            subPanel.gameObject.SetActive(false);
 
-            GameObject button = GameObject.Instantiate(buttonPrefab, rightContainer);
-            ButtonView buttonView = button.GetComponent<ButtonView>();
+            ButtonView buttonView = GameObject.Instantiate(buttonPrefab, rightContainer);
             buttonView.Initialize(subPanel, saveService, leftContainer);
             buttonView.SetButtonDetails(subPanelData.IconPath, subPanelData.Title);
+        }
+
+        if (subPanel != null)
+        {
+            subPanel.gameObject.SetActive(true);
         }
     }
 

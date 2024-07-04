@@ -4,14 +4,14 @@ using TMPro;
 
 public class ButtonView : MonoBehaviour
 {
-    public Image icon;
-    public TMP_Text buttonText;
+    [SerializeField] private Image icon;
+    [SerializeField] private TMP_Text buttonText;
 
-    private GameObject subPanel;
+    private BaseSubPanelView subPanel;
     private ISaveService saveService;
     private Transform parentContainer;
 
-    public void Initialize(GameObject subPanel, ISaveService saveService, Transform parentContainer)
+    public void Initialize(BaseSubPanelView subPanel, ISaveService saveService, Transform parentContainer)
     {
         this.subPanel = subPanel;
         this.saveService = saveService;
@@ -36,7 +36,7 @@ public class ButtonView : MonoBehaviour
         }
 
         // Show the selected subpanel
-        subPanel.SetActive(true);
+        subPanel.gameObject.SetActive(true);
 
         var panelData = saveService.GetPanelData(subPanel.GetComponent<BaseSubPanelView>().PanelName);
         panelData.ClickCount++;

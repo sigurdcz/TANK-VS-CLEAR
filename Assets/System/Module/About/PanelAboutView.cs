@@ -1,13 +1,15 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PanelAboutView : MonoBehaviour, IPanelView
 {
-    public Button backButton;
-    public Transform leftContainer;
-    public Transform rightContainer;
-    public GameObject subPanelPrefab;
-    public GameObject buttonPrefab;
+    [SerializeField] private Button backButton;
+    [SerializeField] private Transform leftContainer;
+    [SerializeField] private Transform rightContainer;
+    [SerializeField] private GameObject subPanelPrefab; //todo
+    [SerializeField] private GameObject buttonPrefab;
+
     private IPanelController controller;
 
     void Start()
@@ -34,5 +36,15 @@ public class PanelAboutView : MonoBehaviour, IPanelView
     private void OnBackButtonClicked()
     {
         controller.OnPanelInteraction("BackButtonClicked");
+    }
+
+    public Transform GetRightContainer()
+    {
+        return rightContainer;
+    }
+
+    public Transform GetLeftContainer()
+    {
+        return leftContainer; 
     }
 }

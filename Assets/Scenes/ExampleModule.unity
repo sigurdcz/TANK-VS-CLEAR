@@ -452,13 +452,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509a54f6a3cec4544a9b99356a38f06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelMainPrefab: {fileID: 9112551496121647222, guid: 53edae09e725df9438838f9fa004c048, type: 3}
-  panelAboutPrefab: {fileID: 6615533647323405968, guid: cf4667b6dd78ce242b004bb98ff62d90, type: 3}
+  panelMainPrefab: {fileID: 4956767801010082081, guid: 53edae09e725df9438838f9fa004c048, type: 3}
+  panelAboutPrefab: {fileID: 7483169682438659118, guid: cf4667b6dd78ce242b004bb98ff62d90, type: 3}
   rootPanelView: {fileID: 410281128788041248}
   saveDataSO: {fileID: 11400000, guid: 1a224d801659a1543be8eb0c8b63a304, type: 2}
-  textSubPanelPrefab: {fileID: 2634685595234807356, guid: 417e1fec22217f2438ceec5f97ec7450, type: 3}
-  containerSubPanelPrefab: {fileID: 8680259614029591619, guid: 7adc4b21639586c409f19b21e9dfd175, type: 3}
-  buttonPrefab: {fileID: 2628370096347186163, guid: 26989602b12b46c488cec0931117ec92, type: 3}
+  textSubPanelPrefab: {fileID: 5725328878234202852, guid: 417e1fec22217f2438ceec5f97ec7450, type: 3}
+  containerSubPanelPrefab: {fileID: 2583934981436049375, guid: 7adc4b21639586c409f19b21e9dfd175, type: 3}
+  buttonPrefab: {fileID: 3505077675765948768, guid: 26989602b12b46c488cec0931117ec92, type: 3}
 --- !u!4 &1027695283
 Transform:
   m_ObjectHideFlags: 0

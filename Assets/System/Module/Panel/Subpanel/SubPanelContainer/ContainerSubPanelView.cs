@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 
 public class ContainerSubPanelView : BaseSubPanelView
 {
-    public Image icon;
-    public TMP_Text title;
-    public Transform container; // Container for additional panels
-    public GameObject panelPrefab; // Prefab for additional panels
+    [SerializeField] private Image icon;
+    [SerializeField] private TMP_Text title;
+    [SerializeField] private Transform container;
+    [SerializeField] private PanelItemView panelPrefab;
 
     public override void Initialize(SubPanelModel model)
     {
@@ -19,8 +18,7 @@ public class ContainerSubPanelView : BaseSubPanelView
 
         foreach (var panelItemModel in model.PanelItems)
         {
-            GameObject panel = Instantiate(panelPrefab, container);
-            PanelItemView panelItem = panel.GetComponent<PanelItemView>();
+            PanelItemView panelItem = Instantiate(panelPrefab, container);
             panelItem.Initialize(panelItemModel);
         }
     }

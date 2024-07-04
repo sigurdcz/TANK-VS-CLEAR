@@ -1,16 +1,14 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class EntryPoint : MonoBehaviour
 {
-    public GameObject panelMainPrefab;
-    public GameObject panelAboutPrefab;
-    public Transform rootPanelView;
-    public SavePanelDataSO saveDataSO; // Reference to the ScriptableObject
-
-    public GameObject textSubPanelPrefab; // Prefab for TextSubPanelView
-    public GameObject containerSubPanelPrefab; // Prefab for ContainerSubPanelView
-    public GameObject buttonPrefab; // Prefab for buttons
+    [SerializeField] private PanelMainView panelMainPrefab;
+    [SerializeField] private PanelAboutView panelAboutPrefab;
+    [SerializeField] private Transform rootPanelView;
+    [SerializeField] private SavePanelDataSO saveDataSO;
+    [SerializeField] private TextSubPanelView textSubPanelPrefab;
+    [SerializeField] private ContainerSubPanelView containerSubPanelPrefab;  
+    [SerializeField] private ButtonView buttonPrefab;  
 
     private ISaveService saveService;
 
@@ -18,17 +16,16 @@ public class EntryPoint : MonoBehaviour
     {
         saveService = new SaveServiceScriptableObject(saveDataSO);
 
-        var mainPanel = Instantiate(panelMainPrefab, rootPanelView).GetComponent<PanelMainView>();
-        var aboutPanel = Instantiate(panelAboutPrefab, rootPanelView).GetComponent<PanelAboutView>();
+        PanelMainView mainPanel = Instantiate(panelMainPrefab, rootPanelView).GetComponent<PanelMainView>();
+        PanelAboutView aboutPanel = Instantiate(panelAboutPrefab, rootPanelView).GetComponent<PanelAboutView>();
 
-        var mainModel = new SavePanelModel("PanelMain");
-        var aboutModel = new SavePanelModel("PanelAbout");
+        SavePanelModel mainModel = new SavePanelModel("PanelMain");
+        SavePanelModel aboutModel = new SavePanelModel("PanelAbout");
 
-        var mainController = new PanelMainController(mainPanel, saveService, mainModel, aboutPanel);
-        var aboutController = new PanelAboutController(aboutPanel, saveService, aboutModel, mainPanel,
-            aboutPanel.leftContainer, aboutPanel.rightContainer, textSubPanelPrefab, containerSubPanelPrefab, buttonPrefab);
+        PanelMainController mainController = new PanelMainController(mainPanel, saveService, mainModel, aboutPanel);
+        PanelAboutController aboutController = new PanelAboutController(aboutPanel, saveService, aboutModel, mainPanel,
+            aboutPanel.GetLeftContainer(), aboutPanel.GetRightContainer(), textSubPanelPrefab, containerSubPanelPrefab, buttonPrefab);
 
-        // Set initial visibility
         mainPanel.Show();
         aboutPanel.Hide();
     }

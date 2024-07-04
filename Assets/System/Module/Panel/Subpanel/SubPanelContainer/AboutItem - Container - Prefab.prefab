@@ -1715,13 +1715,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8680259614029591619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7bea6fc7078ba4c889f9efaf614695, type: 3}
+  m_Script: {fileID: 11500000, guid: 6979f0c6ce11bb9439fe03566565a9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 6902198970080374040}
   title: {fileID: 6126666101761742233}
   container: {fileID: 8410747778840211544}
-  panelPrefab: {fileID: 6031345177887146437, guid: e97ec63170ee90940bbefe8b71ec0057, type: 3}
+  panelPrefab: {fileID: 703896097782530895, guid: e97ec63170ee90940bbefe8b71ec0057, type: 3}
 --- !u!1 &8856793669376685430
 GameObject:
   m_ObjectHideFlags: 0
