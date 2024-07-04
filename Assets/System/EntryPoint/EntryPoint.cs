@@ -16,17 +16,17 @@ public class EntryPoint : MonoBehaviour
     {
         saveService = new SaveServiceScriptableObject(saveDataSO);
 
-        PanelMainView mainPanel = Instantiate(panelMainPrefab, rootPanelView).GetComponent<PanelMainView>();
-        PanelAboutView aboutPanel = Instantiate(panelAboutPrefab, rootPanelView).GetComponent<PanelAboutView>();
+        PanelMainView mainPanelClone = Instantiate(panelMainPrefab, rootPanelView).GetComponent<PanelMainView>();
+        PanelAboutView aboutPanelClone = Instantiate(panelAboutPrefab, rootPanelView).GetComponent<PanelAboutView>();
 
         SavePanelModel mainModel = new SavePanelModel("PanelMain");
         SavePanelModel aboutModel = new SavePanelModel("PanelAbout");
 
-        PanelMainController mainController = new PanelMainController(mainPanel, saveService, mainModel, aboutPanel);
-        PanelAboutController aboutController = new PanelAboutController(aboutPanel, saveService, aboutModel, mainPanel,
-            aboutPanel.GetLeftContainer(), aboutPanel.GetRightContainer(), textSubPanelPrefab, containerSubPanelPrefab, buttonPrefab);
+        PanelMainController mainController = new PanelMainController(mainPanelClone, saveService, mainModel, aboutPanelClone);
+        PanelAboutController aboutController = new PanelAboutController(aboutPanelClone, saveService, aboutModel, mainPanelClone,
+            aboutPanelClone.GetLeftContainer(), aboutPanelClone.GetRightContainer(), textSubPanelPrefab, containerSubPanelPrefab, buttonPrefab);
 
-        mainPanel.Show();
-        aboutPanel.Hide();
+        mainPanelClone.Show();
+        aboutPanelClone.Hide();
     }
 }
