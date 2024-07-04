@@ -15,12 +15,12 @@ public class PlayerModel
 
     public void LoadData()
     {
-        Position = saveService.LoadVector2(SaveKeyPosition, Position);
+        //Position = saveService.LoadVector2(SaveKeyPosition, Position);
     }
 
     public void SaveData()
     {
-        saveService.SaveVector2(SaveKeyPosition, Position);
+        //saveService.SaveVector2(SaveKeyPosition, Position);
     }
 
     public event Action OnPositionUpdate;

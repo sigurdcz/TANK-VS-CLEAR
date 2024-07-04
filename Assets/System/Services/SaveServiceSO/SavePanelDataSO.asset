@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e46c3aff144fb43a2b9c75ca585ce6, type: 3}
+  m_Name: SavePanelDataSO
+  m_EditorClassIdentifier: 
+  panels:
+  - Name: a1-r
+    ClickCount: 0
+    IsShown: 1
+  - Name: PanelMain
+    ClickCount: 1
+    IsShown: 0
+  - Name: 
+    ClickCount: 15
+    IsShown: 0
+  - Name: PanelAbout
+    ClickCount: 2
+    IsShown: 0
+  subPanels:
+  - IconPath: a1-r
+    Title: 1
+    TextContent: a1-r
+  - IconPath: a1-r
+    Title: 2
+    TextContent: a1-r
+  - IconPath: a1-r
+    Title: 3
+    TextContent: a1-r
